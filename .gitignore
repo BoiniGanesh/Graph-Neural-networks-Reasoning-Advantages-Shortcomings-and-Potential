@@ -1,0 +1,42 @@
+# macOS-specific
+.DS_Store
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+env/
+venv/
+ENV/
+.venv/
+env.bak/
+venv.bak/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Log and cache files
+*.log
+*.out
+*.pid
+*.tmp
+*.swp
+.cache/
+*.bak
+
+# Environment
+.env
+
+# Ignore the primekg folder inside any data/ folder
+data/primekg/
+
+# Ignore all logs
+logs/
+*.log
+
+# Ignore output files (pickles, CSVs, images, etc.)
+# Ignore dynamically generated outputs
+main/src/Code/Tools/PrimeKG/outputs/
+

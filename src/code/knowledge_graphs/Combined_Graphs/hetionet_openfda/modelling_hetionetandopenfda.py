@@ -576,7 +576,7 @@ for _, _, attr in G.edges(data=True):
     if "relation" not in attr:
         attr["relation"] = attr.get("display_relation", attr.get("relationship", attr.get("type", attr.get("label", "unknown"))))
 
-print(f"✅ Loaded graph with {len(G.nodes)} nodes and {len(G.edges)} edges.")
+print(f" Loaded graph with {len(G.nodes)} nodes and {len(G.edges)} edges.")
 
 # ----------------------------
 # 2) Typed remap + splits
@@ -598,8 +598,8 @@ for s, t, attr in G.edges(data=True):
     t_t, t_i = node_id_map[t]
     edge_type_map[(s_t, rel, t_t)].append((s_i, t_i))
 
-print(f"✅ Node types: {list(node_type_map.keys())}")
-print(f"✅ Total edge types: {len(edge_type_map)}")
+print(f"Node types: {list(node_type_map.keys())}")
+print(f"Total edge types: {len(edge_type_map)}")
 
 # Global ids per (type, local)
 type_offsets, global_id_map = {}, {}
@@ -783,7 +783,7 @@ src_glob_all = edge_index_cpu[0].to(device)
 dst_glob_all = edge_index_cpu[1].to(device)
 rels_all     = edge_type_cpu.to(device)
 
-print("\n🔁 Training with NeighborLoader mini-batches + AMP ...")
+print("\n Training with NeighborLoader mini-batches + AMP ...")
 for epoch in range(1, EPOCHS+1):
     model.train()
     epoch_loss = 0.0
@@ -856,7 +856,7 @@ for epoch in range(1, EPOCHS+1):
 # ----------------------------
 # 7) Batched inference (DistMult-ready embeddings)
 # ----------------------------
-print("\n🔎 Computing full-node embeddings (batched inference) ...")
+print("\n Computing full-node embeddings (batched inference) ...")
 model.eval()
 OUT_DIM = 32
 z_all = torch.empty((num_nodes, OUT_DIM), dtype=torch.float32, device=device)
@@ -882,7 +882,7 @@ with torch.no_grad():
 # ----------------------------
 # 8) Evaluation (per relation + overall) — DistMult + zero_division=0
 # ----------------------------
-print("\n📊 Final evaluation per edge type (filtered negatives, DistMult):")
+print("\n Final evaluation per edge type (filtered negatives, DistMult):")
 
 def eval_relation(z_all, etype, splits, k_neg=1):
     rel_id = rel2id[etype]
@@ -960,7 +960,7 @@ if all_pos_eidx_list:
     overall_r = recall_score(y, preds, zero_division=0)
     overall_f1 = f1_score(y, preds, zero_division=0)
 
-    print("\n🌍 Overall Performance (filtered-ish, typed tails, DistMult):")
+    print("\n Overall Performance (filtered-ish, typed tails, DistMult):")
     print(f"Overall AUC = {overall_auc:.4f}")
     print(f"Overall Precision = {overall_p:.3f}")
     print(f"Overall Recall = {overall_r:.3f}")
@@ -1008,7 +1008,7 @@ print("Using device:", device)
 # Accepts a pickle produced via: pickle.dump(G, open(path,'wb')) where G is a NetworkX graph
 pickle_path = "/home/ubuntu/myproject/venv/merged_ofda_hetionet/combined_openfda_hetionet.pkl"  # <- change if needed
 assert os.path.exists(pickle_path), f"Path does not exist: {pickle_path}"
-print(f"📥 Loading NetworkX graph from pickle: {pickle_path}")
+print(f" Loading NetworkX graph from pickle: {pickle_path}")
 
 open_fn = gzip.open if pickle_path.endswith(".gz") else open
 with open_fn(pickle_path, "rb") as f:
@@ -1035,7 +1035,7 @@ for _, _, attr in G.edges(data=True):
     if "relation" not in attr:
         attr["relation"] = attr.get("display_relation", attr.get("relationship", attr.get("type", attr.get("label", "unknown"))))
 
-print(f"✅ Loaded graph with {len(G.nodes)} nodes and {len(G.edges)} edges.")
+print(f" Loaded graph with {len(G.nodes)} nodes and {len(G.edges)} edges.")
 
 # ----------------------------
 # 2) Typed remap + splits
@@ -1057,8 +1057,8 @@ for s, t, attr in G.edges(data=True):
     t_t, t_i = node_id_map[t]
     edge_type_map[(s_t, rel, t_t)].append((s_i, t_i))
 
-print(f"✅ Node types: {list(node_type_map.keys())}")
-print(f"✅ Total edge types: {len(edge_type_map)}")
+print(f" Node types: {list(node_type_map.keys())}")
+print(f" Total edge types: {len(edge_type_map)}")
 
 # Global ids per (type, local)
 type_offsets, global_id_map = {}, {}
@@ -1242,7 +1242,7 @@ src_glob_all = edge_index_cpu[0].to(device)
 dst_glob_all = edge_index_cpu[1].to(device)
 rels_all     = edge_type_cpu.to(device)
 
-print("\n🔁 Training with NeighborLoader mini-batches + AMP ...")
+print("\n Training with NeighborLoader mini-batches + AMP ...")
 for epoch in range(1, EPOCHS+1):
     model.train()
     epoch_loss = 0.0
@@ -1315,7 +1315,7 @@ for epoch in range(1, EPOCHS+1):
 # ----------------------------
 # 7) Batched inference (DistMult-ready embeddings)
 # ----------------------------
-print("\n🔎 Computing full-node embeddings (batched inference) ...")
+print("\n Computing full-node embeddings (batched inference) ...")
 model.eval()
 OUT_DIM = 32
 z_all = torch.empty((num_nodes, OUT_DIM), dtype=torch.float32, device=device)
@@ -1341,7 +1341,7 @@ with torch.no_grad():
 # ----------------------------
 # 8) Evaluation (per relation + overall) — DistMult + zero_division=0
 # ----------------------------
-print("\n📊 Final evaluation per edge type (filtered negatives, DistMult):")
+print("\n Final evaluation per edge type (filtered negatives, DistMult):")
 
 def eval_relation(z_all, etype, splits, k_neg=1):
     rel_id = rel2id[etype]
@@ -1419,7 +1419,7 @@ if all_pos_eidx_list:
     overall_r = recall_score(y, preds, zero_division=0)
     overall_f1 = f1_score(y, preds, zero_division=0)
 
-    print("\n🌍 Overall Performance (filtered-ish, typed tails, DistMult):")
+    print("\n Overall Performance (filtered-ish, typed tails, DistMult):")
     print(f"Overall AUC = {overall_auc:.4f}")
     print(f"Overall Precision = {overall_p:.3f}")
     print(f"Overall Recall = {overall_r:.3f}")

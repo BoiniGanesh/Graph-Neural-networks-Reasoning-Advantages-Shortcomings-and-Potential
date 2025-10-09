@@ -21,7 +21,7 @@ with gzip.open(path, 'rt') as f:
 
 edges_df = pd.DataFrame(edges_data, columns=['source', 'relation', 'target'])
 edges_df.to_csv("hetionet_edges.csv", index=False)
-print("✅ Saved edges to hetionet_edges.csv")
+print(" Saved edges to hetionet_edges.csv")
 print(edges_df.head())
 
 # %%
@@ -68,30 +68,30 @@ import random
 
 # === Load Hetionet Graph ===
 G = nx.read_graphml("hetionet.graphml")
-print(f"✅ Hetionet loaded with {G.number_of_nodes():,} nodes and {G.number_of_edges():,} edges.")
+print(f" Hetionet loaded with {G.number_of_nodes():,} nodes and {G.number_of_edges():,} edges.")
 
 # === Health Checks ===
 node_types = [data.get("kind", "unknown") for _, data in G.nodes(data=True)]
 edge_types = [data.get("relation", "unknown") for _, _, data in G.edges(data=True)]
-print("\n🧬 Node Type Counts:")
+print("\n Node Type Counts:")
 for k, v in Counter(node_types).items():
-    print(f"  - {k}: {v:,}")
-print("\n🔗 Edge Type Counts:")
+    print(f"   {k}: {v:,}")
+print("\n Edge Type Counts:")
 for k, v in Counter(edge_types).items():
-    print(f"  - {k}: {v:,}")
+    print(f"   {k}: {v:,}")
 
 # Connectivity
 if isinstance(G, nx.DiGraph):
-    print("\n🔗 Directed Graph Connectivity:")
-    print(f"  - Weakly Connected Components: {nx.number_weakly_connected_components(G)}")
-    print(f"  - Strongly Connected Components: {nx.number_strongly_connected_components(G)}")
+    print("\n Directed Graph Connectivity:")
+    print(f"   Weakly Connected Components: {nx.number_weakly_connected_components(G)}")
+    print(f"  Strongly Connected Components: {nx.number_strongly_connected_components(G)}")
 else:
-    print("\n🔗 Undirected Graph Connectivity:")
+    print("\n Undirected Graph Connectivity:")
     print(f"  - Connected Components: {nx.number_connected_components(G)}")
 
 # Degree Distribution
 degrees = [deg for _, deg in G.degree()]
-print("\n📈 Degree Distribution:")
+print("\n Degree Distribution:")
 print(f"  - Min: {min(degrees)}, Max: {max(degrees)}, Avg: {sum(degrees)/len(degrees):.2f}")
 
 # === Helper Functions ===
@@ -104,7 +104,7 @@ def draw_interactive_subgraph(node_names, title="Subgraph"):
     subgraph = G.subgraph(indices)
 
     if not subgraph.nodes:
-        print("⚠️ No valid nodes to draw.")
+        print(" No valid nodes to draw.")
         return
 
     pos = nx.spring_layout(subgraph, seed=1)
@@ -158,33 +158,33 @@ def draw_shortest_path(entity1, entity2):
     tgt = name_to_node.get(entity2)
 
     if not src or not tgt:
-        print(f"❌ One or both entities not found: '{entity1}', '{entity2}'")
+        print(f" One or both entities not found: '{entity1}', '{entity2}'")
         return
 
     if not nx.has_path(G, src, tgt):
-        print(f"❌ No path found between '{entity1}' and '{entity2}'")
+        print(f" No path found between '{entity1}' and '{entity2}'")
         return
 
     path = nx.shortest_path(G, source=src, target=tgt)
     readable_path = [G.nodes[n].get("name", str(n)) for n in path]
-    print(f"✅ Shortest path ({len(path)} steps): {' → '.join(readable_path)}")
+    print(f" Shortest path ({len(path)} steps): {' → '.join(readable_path)}")
     draw_interactive_subgraph(readable_path, title=f"Shortest Path: {entity1} → {entity2}")
 
 # === Queries for "asthma" and "albuterol" ===
 entity = "asthma"
 drug_query = "albuterol"
 
-print(f"\n💊 Drugs for '{entity}':")
+print(f"\n Drugs for '{entity}':")
 drugs = get_drugs_for_disease(entity)
 print(drugs[:10])
 draw_interactive_subgraph([entity] + drugs[:10], title="Drugs for Disease")
 
-print(f"\n🧬 Genes for '{entity}':")
+print(f"\n Genes for '{entity}':")
 genes = get_genes_for_disease(entity)
 print(genes[:10])
 draw_interactive_subgraph([entity] + genes[:10], title="Genes for Disease")
 
-print(f"\n🔗 Shortest path from 'TP53' to '{entity}':")
+print(f"\n Shortest path from 'TP53' to '{entity}':")
 draw_shortest_path("TP53", entity)
 
 # %%
@@ -194,7 +194,7 @@ def draw_neighbors_interactive(entity_name):
     node = node_map.get(entity_name)
 
     if node is None:
-        print(f"❌ Entity '{entity_name}' not found.")
+        print(f" Entity '{entity_name}' not found.")
         return
 
     neighbors = list(G.neighbors(node))
@@ -243,7 +243,7 @@ def draw_neighbors_interactive(entity_name):
         data=[edge_trace, node_trace],
         layout=go.Layout(
             title=dict(
-                text=f"🌐 Neighbors of '{entity_name}' in Hetionet",
+                text=f" Neighbors of '{entity_name}' in Hetionet",
                 font=dict(size=22)
             ),
             showlegend=False,

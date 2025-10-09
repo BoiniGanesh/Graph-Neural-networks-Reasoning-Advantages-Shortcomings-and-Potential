@@ -15,25 +15,25 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 
 #  Confirm it's correct
-print("🔧 Data path resolved to:", os.path.abspath(DATA_PATH))
+print(" Data path resolved to:", os.path.abspath(DATA_PATH))
 try:
-    print("📂 Files in data path:", os.listdir(DATA_PATH))
+    print(" Files in data path:", os.listdir(DATA_PATH))
 except Exception as e:
-    print("❌ Could not list data path:", e)
+    print(" Could not list data path:", e)
 
 # Files and Labels
 files = {
-    "README.txt": "📘 README",
-    "nodes.csv": "🧠 Nodes",
-    "kg.csv": "📊 KG",
-    "kg_raw.csv": "📊 KG Raw",
-    "kg_grouped.csv": "📦 KG Grouped",
-    "kg_grouped_diseases.csv": "🧬 KG Grouped Diseases",
-    "kg_grouped_diseases_bert_map.csv": "🧬 KG Diseases BERT Map",
-    "kg.giant.csv": "🗺️ KG Giant",
-    "edges.csv": "🔗 Edges",
-    "drug_features.csv": "💊 Drug Features",
-    "disease_features.csv": "🦠 Disease Features"
+    "README.txt": " README",
+    "nodes.csv": " Nodes",
+    "kg.csv": " KG",
+    "kg_raw.csv": " KG Raw",
+    "kg_grouped.csv": " KG Grouped",
+    "kg_grouped_diseases.csv": " KG Grouped Diseases",
+    "kg_grouped_diseases_bert_map.csv": " KG Diseases BERT Map",
+    "kg.giant.csv": " KG Giant",
+    "edges.csv": " Edges",
+    "drug_features.csv": " Drug Features",
+    "disease_features.csv": " Disease Features"
 }
 
 # Load and preview files
@@ -48,7 +48,7 @@ for file, label in files.items():
             df = pd.read_csv(full_path)
             print(df.head())
     except Exception as e:
-        print(f"❌ Failed to load {file}: {e}")
+        print(f" Failed to load {file}: {e}")
 
 # %%
 import networkx as nx
@@ -79,7 +79,7 @@ for _, row in kg_df.iterrows():
         display_relation=row["display_relation"]
     )
 
-print(f"✅ Graph built with {G.number_of_nodes()} nodes and {G.number_of_edges()} edges.")
+print(f" Graph built with {G.number_of_nodes()} nodes and {G.number_of_edges()} edges.")
 
 #%%
 # Load feature files
@@ -100,7 +100,7 @@ for _, row in disease_df.iterrows():
         for col in disease_df.columns[1:]:
             G.nodes[idx][col] = row[col]
 
-print("✅ Drug and disease features enriched into graph.")
+print(" Drug and disease features enriched into graph.")
 
 #%%
 # Optional: Add BERT similarity edges between grouped diseases
@@ -124,38 +124,38 @@ from collections import Counter
 import networkx as nx
 import random
 
-print("🔍 Running PrimeKG Graph Health Check...\n")
+print(" Running PrimeKG Graph Health Check...\n")
 
-# 🎯 1. Size
+#  1. Size
 num_nodes = G.number_of_nodes()
 num_edges = G.number_of_edges()
-print(f"📏 Graph Size: {num_nodes:,} nodes, {num_edges:,} edges")
+print(f" Graph Size: {num_nodes:,} nodes, {num_edges:,} edges")
 
 #%%
-# 🔬 2. Type Counts
+#  2. Type Counts
 node_types = [data["node_type"] for _, data in G.nodes(data=True) if "node_type" in data]
 type_counts = Counter(node_types)
-print("\n🧬 Node Type Counts:")
+print("\n Node Type Counts:")
 for k, v in type_counts.items():
-    print(f"  - {k}: {v:,}")
+    print(f"   {k}: {v:,}")
 
 
 #%%
-# 🧩 3. Connectivity
+#  3. Connectivity
 if isinstance(G, nx.DiGraph):
     weak_cc = nx.number_weakly_connected_components(G)
     strong_cc = nx.number_strongly_connected_components(G)
-    print(f"\n🔗 Connectivity (Directed Graph):")
-    print(f"  - Weakly Connected Components: {weak_cc}")
-    print(f"  - Strongly Connected Components: {strong_cc}")
+    print(f"\n Connectivity (Directed Graph):")
+    print(f"  Weakly Connected Components: {weak_cc}")
+    print(f"  Strongly Connected Components: {strong_cc}")
 else:
     cc = nx.number_connected_components(G)
-    print(f"\n🔗 Connectivity (Undirected Graph): {cc} connected components")
+    print(f"\n Connectivity (Undirected Graph): {cc} connected components")
 
 
 #%%
-# 🔄 4. Try Random Path Check
-print("\n🔄 Path Check: Trying 1 random gene → disease...")
+#  4. Try Random Path Check
+print("\n Path Check: Trying 1 random gene → disease...")
 genes = [n for n, d in G.nodes(data=True) if d.get("node_type") == "gene/protein"]
 diseases = [n for n, d in G.nodes(data=True) if d.get("node_type") == "disease"]
 
@@ -174,15 +174,15 @@ try:
     print(f"   Path found ({len(path)} steps):")
     print("    → " + " → ".join(readable_path))
 except nx.NetworkXNoPath:
-    print("  ❌ No path found between them.")
+    print("  No path found between them.")
 
 #%%
-# 📈 5. Degree Distribution
+# 5. Degree Distribution
 degrees = [deg for _, deg in G.degree()]
-print("\n📈 Degree Distribution:")
-print(f"  - Min Degree: {min(degrees)}")
-print(f"  - Max Degree: {max(degrees)}")
-print(f"  - Average Degree: {sum(degrees) / len(degrees):.2f}")
+print("\n Degree Distribution:")
+print(f" Min Degree: {min(degrees)}")
+print(f" Max Degree: {max(degrees)}")
+print(f" Average Degree: {sum(degrees) / len(degrees):.2f}")
 
 
 #%%
@@ -270,7 +270,7 @@ def draw_neighbors_interactive(entity_name):
         data=[edge_trace, node_trace],
         layout=go.Layout(
             title=dict(
-                text=f"🧠 Interactive Neighborhood of '{entity_name}'",
+                text=f" Interactive Neighborhood of '{entity_name}'",
                 font=dict(size=22)
             ),
             showlegend=False,
@@ -304,7 +304,7 @@ def draw_interactive_subgraph(node_names, title="Subgraph"):
     subgraph = G.subgraph(indices)
 
     if not subgraph.nodes:
-        print("⚠️ No valid nodes to draw.")
+        print(" No valid nodes to draw.")
         return
 
     pos = nx.spring_layout(subgraph, seed=1)
@@ -378,11 +378,11 @@ def draw_shortest_path(entity1, entity2):
     src = name_to_node.get(entity1)
     tgt = name_to_node.get(entity2)
     if not src or not tgt or not nx.has_path(G, src, tgt):
-        print(f"❌ No path found between '{entity1}' and '{entity2}'")
+        print(f" No path found between '{entity1}' and '{entity2}'")
         return
     path = nx.shortest_path(G, src, tgt)
     readable_path = [G.nodes[n]["node_name"] for n in path]
-    print(f"✅ Shortest path ({len(path)} steps): {' → '.join(readable_path)}")
+    print(f" Shortest path ({len(path)} steps): {' → '.join(readable_path)}")
     draw_interactive_subgraph(readable_path, title=f"Shortest Path: {entity1} → {entity2}")
 
 def find_drugs_sharing_side_effects(drug_name):
@@ -425,23 +425,23 @@ entity = "asthma"
 drug_query = "albuterol"
 
 # 1. Drugs
-print(f"\n💊 Drugs used for '{entity}':")
+print(f"\n Drugs used for '{entity}':")
 drugs = get_drugs_for_disease(entity)
 print(drugs[:10])
 draw_interactive_subgraph([entity] + drugs[:10], title="Drugs for Disease")
 
 # 2. Genes
-print(f"\n🧬 Genes linked to '{entity}':")
+print(f"\n Genes linked to '{entity}':")
 genes = get_genes_for_disease(entity)
 print(genes[:10])
 draw_interactive_subgraph([entity] + genes[:10], title="Genes for Disease")
 
 # 3. Shortest path
-print(f"\n🔗 Shortest path from 'TP53' to '{entity}':")
+print(f"\n Shortest path from 'TP53' to '{entity}':")
 draw_shortest_path("TP53", entity)
 
 # 4. BERT group (linked manually above)
-print(f"\n🧠 BERT-similar diseases to '{entity}':")
+print(f"\n BERT-similar diseases to '{entity}':")
 bert_siblings = [G.nodes[n]['node_name']
                  for n in G.successors(asthma_node)
                  if G[asthma_node][n]["relation"] == "bert_related"]
@@ -449,16 +449,16 @@ if bert_siblings:
     print(bert_siblings[:10])
     draw_interactive_subgraph([entity] + bert_siblings, title="BERT-Similar Diseases (Asthma)")
 else:
-    print("❌ No BERT-linked diseases found.")
+    print(" No BERT-linked diseases found.")
 
 # 5. Shared side effect drugs
-print(f"\n⚠️ Drugs that share side effects with '{drug_query}':")
+print(f"\n Drugs that share side effects with '{drug_query}':")
 shared = find_drugs_sharing_side_effects(drug_query)
 if shared:
     print(shared[:10])
     draw_interactive_subgraph([drug_query] + shared[:10], title="Shared Side Effects")
 else:
-    print("❌ No shared side-effect drugs found.")
+    print(" No shared side-effect drugs found.")
 
 # %%
 #save graph
@@ -489,10 +489,10 @@ print(f" Graph loaded with {G.number_of_nodes()} nodes and {G.number_of_edges()}
 # Try Graphviz layout if possible (for better large-scale layout)
 try:
     from networkx.drawing.nx_agraph import graphviz_layout
-    print("⚡ Using Graphviz layout (sfdp)")
+    print(" Using Graphviz layout (sfdp)")
     pos = graphviz_layout(G, prog="sfdp")
 except ImportError:
-    print("🐢 Falling back to spring layout (slower for large graphs)")
+    print(" Falling back to spring layout (slower for large graphs)")
     pos = nx.spring_layout(G, k=0.005, iterations=30, seed=42)
 
 # Plot and save

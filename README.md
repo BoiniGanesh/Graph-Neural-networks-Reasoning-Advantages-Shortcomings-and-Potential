@@ -79,6 +79,7 @@ If you use this repository or the unified biomedical KG, please cite:
 
 **Dinesh Chandra Gaddam**
 📩 [dineshchandra.gaddam@gwu.edu](mailto:dineshchandra.gaddam@gwu.edu)
+**Ganesh Kumar Boini**
 📩 [g.boini@gwu.edu](mailto:g.boini@gwu.edu)
 Department of CCAS, George Washington University
 

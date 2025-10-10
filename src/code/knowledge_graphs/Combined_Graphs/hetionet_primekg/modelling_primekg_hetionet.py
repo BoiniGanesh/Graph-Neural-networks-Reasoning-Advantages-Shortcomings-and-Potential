@@ -7,7 +7,7 @@
 
 """
 
-# ✅ PrimeKG R-GCN Modeling Pipeline
+#  PrimeKG R-GCN Modeling Pipeline
 
 import pickle
 import torch
@@ -23,7 +23,7 @@ import random
 pkl_path = "/content/drive/MyDrive/Research_kgTxagent/primekg_hetionet_combined.pkl"
 with open(pkl_path, "rb") as f:
     G = pickle.load(f)
-print(f"✅ Loaded graph with {len(G.nodes)} nodes and {len(G.edges)} edges.")
+print(f" Loaded graph with {len(G.nodes)} nodes and {len(G.edges)} edges.")
 
 # --- Map Nodes and Edges Using PrimeKG Naming Conventions ---
 node_type_map = defaultdict(list)
@@ -46,8 +46,8 @@ for src, dst, attr in G.edges(data=True):
     dst_t, dst_i = node_id_map[dst]
     edge_type_map[(src_t, rel, dst_t)].append((src_i, dst_i))
 
-print(f"✅ Node types: {list(node_type_map.keys())}")
-print(f"✅ Total edge types: {len(edge_type_map)}")
+print(f" Node types: {list(node_type_map.keys())}")
+print(f" Total edge types: {len(edge_type_map)}")
 
 # --- Build Homogeneous Graph ---
 type_offsets = {}
@@ -144,7 +144,7 @@ def evaluate(z, pos_eidx, num_nodes, k_neg=1):
     return auc, precision, recall, f1
 
 # --- Unified R-GCN Training ---
-print("\n🔁 Training unified R-GCN model on all edge types together...")
+print("\n Training unified R-GCN model on all edge types together...")
 EPOCHS = 30
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 node_ids = torch.arange(num_nodes, device=device)
@@ -187,7 +187,7 @@ for epoch in range(1, EPOCHS + 1):
     print(f"Epoch {epoch:02d} | Total Loss: {epoch_loss:.4f}")
 
 # --- Final Evaluation Per Edge Type ---
-print("\n📊 Final evaluation per edge type:")
+print("\n Final evaluation per edge type:")
 model.eval()
 results = []
 with torch.no_grad():
@@ -205,7 +205,7 @@ with torch.no_grad():
         print(f"{edge_type_key}: AUC={auc:.4f}, P={p:.3f}, R={r:.3f}, F1={f1:.3f}")
 
 # --- Overall Metrics ---
-print("\n🌍 Overall Performance:")
+print("\n Overall Performance:")
 all_test_edges = torch.cat([splits["test"] for splits in edge_type_splits.values()], dim=1)
 auc, p, r, f1 = evaluate(z, all_test_edges, num_nodes)
 print(f"Overall AUC = {auc:.4f}")

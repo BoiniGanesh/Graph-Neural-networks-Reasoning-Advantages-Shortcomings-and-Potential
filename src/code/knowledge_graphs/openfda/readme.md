@@ -63,12 +63,13 @@ The same core architecture and training pipeline used for Hetionet and PrimeKG w
 
 
 **Implementation Steps:**
-1. Load the OpenFDA graph with node and relation mappings.  
-2. Generate type-consistent negative samples for training.  
-3. Split data into training, validation, and testing sets.  
-4. Apply two-layer R-GCN model with relation-specific transformations.  
-5. Train using binary cross-entropy loss over positive and negative edges.  
-6. Evaluate with AUC, precision, recall, and F1 metrics per relation type.
+- Load and normalize OpenFDA graph (nodes, relations, types).
+- Build per-type mappings and edge-type relations.
+= Split each relation’s edges into train/val/test sets.
+- Generate type-consistent negative samples.
+- Train a 2-layer R-GCN encoder with relation-specific transformations.
+- Use DistMult (or dot-product) decoder with binary cross-entropy loss.
+- Evaluate per relation and overall using AUC, precision, recall, F1.
 
 Despite the consistent workflow, R-GCN performance decreased significantly on OpenFDA.  
 The model’s lower AUC (0.5690) and F1 (0.382) highlight the difficulty of reasoning over regulatory, text-derived relationships.  

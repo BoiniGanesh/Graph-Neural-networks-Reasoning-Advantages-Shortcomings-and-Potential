@@ -15,7 +15,7 @@ The pipeline begins with loading the Hetionet graph and extracting all relation 
 
 **Figure – XGBoost Binary Link Prediction Workflow**  
 *(xgboost_link_horizontal.pdf)*  
-![XGBoost Binary Link Prediction Workflow](figures/xgboost_link_horizontal.pdf)
+![XGBoost Binary Link Prediction Workflow](xgboost_link_horizontal.pdf)
 
 Steps:
 
@@ -34,7 +34,7 @@ For multi-class prediction, existing edges were labeled by relation type. A labe
 
 **Figure – XGBoost Multi-Class Relation Classification Workflow**  
 *(xgboost_linktype_horizontal.pdf)*  
-![XGBoost Multi-Class Relation Classification Workflow](figures/xgboost_linktype_horizontal.pdf)
+![XGBoost Multi-Class Relation Classification Workflow](xgboost_linktype_horizontal.pdf)
 
 
 
@@ -62,7 +62,7 @@ Each edge was represented by concatenated node embeddings, with type-consistent 
 
 **Figure – FFNN Binary Link Prediction Workflow**  
 *(FNN_link_horizontal.pdf)*  
-![FFNN Binary Link Prediction Workflow](figures/FNN_link_horizontal.pdf)
+![FFNN Binary Link Prediction Workflow](FNN_link_horizontal.pdf)
 
 ---
 
@@ -83,7 +83,7 @@ This workflow used degree-based features as input to a two-layer dense FFNN trai
 
 **Figure – FFNN Multi-Class Relation Classification Workflow**  
 *(FFNN_linktype_horizontal.pdf)*  
-![FFNN Multi-Class Relation Classification Workflow](figures/FFNN_linktype_horizontal.pdf)
+![FFNN Multi-Class Relation Classification Workflow](FFNN_linktype_horizontal.pdf)
 
 Steps:
 
@@ -114,7 +114,7 @@ Positive edges were paired with type-consistent negative samples by corrupting e
 
 **Figure – R-GCN/GAT Link Prediction Workflow**  
 *(GAT_RGCN_link_horizontal.pdf)*  
-![R-GCN Link Prediction Workflow](figures/GAT_RGCN_link_horizontal.pdf)
+![R-GCN Link Prediction Workflow](GAT_RGCN_link_horizontal.pdf)
 
 
 
@@ -137,7 +137,7 @@ Node embeddings were concatenated for each edge and passed through a classifier 
 
 **Figure – R-GCN / GAT Multi-Class Relation Classification Workflow**  
 *(GAT_RGCN_linktype_horizontal.pdf)*  
-![R-GCN / GAT Multi-Class Relation Classification Workflow](figures/GAT_RGCN_linktype_horizontal.pdf)
+![R-GCN / GAT Multi-Class Relation Classification Workflow](GAT_RGCN_linktype_horizontal.pdf)
 Steps:
 
 1. Load and encode graph data

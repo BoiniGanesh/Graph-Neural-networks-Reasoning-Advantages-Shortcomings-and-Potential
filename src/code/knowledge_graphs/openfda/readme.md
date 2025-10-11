@@ -25,7 +25,7 @@ The OpenFDA knowledge graph was constructed using an automated multi-stage pipel
 
 **Figure: OpenFDA Knowledge Graph Construction Pipeline**  
 *(openfda_pipeline.pdf)*  
-![OpenFDA Knowledge Graph Construction Pipeline](OpenFDA_Construction_pipeline_horizontal.pdf)
+![OpenFDA Knowledge Graph Construction Pipeline](./figures/OpenFDA_Construction_pipeline_horizontal.png)
 
 **Workflow Summary:**
 1. **Connect to OpenFDA API** — Retrieve raw drug data including labeling, warnings, dosage, and adverse events.  
@@ -45,11 +45,11 @@ The OpenFDA KG captures fine-grained relationships from drug labeling sections.
 
 **Figure: Example OpenFDA Subgraph (Cobalt Node)**  
 *(openfda_subgraph.pdf)*  
-![Example OpenFDA Subgraph](openfda_subgraph.pdf)
+![Example OpenFDA Subgraph](./figures/openfda_subgraph.png)
 
 **Figure: Internal Structure of the OpenFDA Graph**  
 *(openfda_structure.pdf)*  
-![Internal Structure of the OpenFDA Graph](openfda_internal.pdf)
+![Internal Structure of the OpenFDA Graph](./figures/openfda_internal.png)
 
 Figure 4 illustrates a representative subgraph for a specific compound, showing linked nodes such as active ingredients, dosage information, and warnings.  
 Figure 5 expands this to a schema-level view, mapping entity classes (drugs, labeling sections, adverse events) and their semantic relationships.

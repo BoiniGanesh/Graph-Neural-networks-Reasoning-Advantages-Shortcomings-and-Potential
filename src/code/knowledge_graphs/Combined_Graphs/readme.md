@@ -12,7 +12,7 @@ All node and edge types were normalized to PrimeKG’s ontology.  Redundant enti
 
 **Figure 6 — PrimeKG–Hetionet Fusion Subgraph**  
 *(primekg_hetionet_subgraph.pdf)*  
-![PrimeKG–Hetionet Fusion Subgraph](figures/primekg_hetionet_subgraph.pdf)
+![PrimeKG–Hetionet Fusion Subgraph](./figures/fusion_primeheti_subgraph%20.png)
 
 **Workflow Summary**
 1. **Schema Alignment** – Map Hetionet node and relation types to PrimeKG equivalents.  
@@ -32,7 +32,7 @@ The pipeline normalizes OpenFDA-specific entities (e.g., warnings, indications, 
 
 **Figure 7 — Unified PrimeKG–Hetionet–OpenFDA Graph**  
 *(primekg_hetionet_openfda_subgraph.pdf)*  
-![Unified PrimeKG–Hetionet–OpenFDA Graph](figures/primekg_hetionet_openfda_subgraph.pdf)
+![Unified PrimeKG–Hetionet–OpenFDA Graph](figures/fusion_prime_heti_openfda_subgraph.png)
 
 **Implementation Workflow**
 1. **Load normalized PrimeKG–Hetionet fusion.**  
@@ -53,7 +53,7 @@ Since both graphs were already normalized to PrimeKG’s schema, integration req
 
 **Figure 8 — Hetionet–OpenFDA Fusion Subgraph**  
 *(hetionet_openfda_subgraph.pdf)*  
-![Hetionet–OpenFDA Fusion Subgraph](figures/hetionet_openfda_subgraph.pdf)
+![Hetionet–OpenFDA Fusion Subgraph](figures/fusion_hetionet_openfda_subgraph.png)
 
 **Fusion Steps**
 1. **Load normalized Hetionet and OpenFDA KGs.**  

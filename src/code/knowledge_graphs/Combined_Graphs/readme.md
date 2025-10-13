@@ -18,7 +18,7 @@ All node and edge types were normalized to PrimeKG’s ontology.  Redundant enti
 1. **Schema Alignment** – Map Hetionet node and relation types to PrimeKG equivalents.  
 2. **Semantic Normalization** – Resolve naming and structural inconsistencies across datasets.  
 3. **Graph Merge** – Combine normalized nodes / edges, preserving unique Hetionet content.  
-4. **Validation** – Confirm schema-level interoperability for R-GCN, R-GAT, and classifier pipelines.  
+4. **Validation** – Confirm schema-level interoperability for R-GCN and classifier pipelines.  
 5. **Visualization** – Generate 1-hop neighborhoods around benchmark seeds (TP53, BRCA1, EGFR, Metformin, Acetaminophen, Breast Cancer).
 
 This fusion provides a unified biomedical graph with improved relational coverage and cross-dataset semantic consistency, enabling downstream modeling and KG reasoning.

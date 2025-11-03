@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""modelling_hetonet_openfda_primekg.ipynb.
-
-Original file is located at
-    https://colab.research.google.com/drive/1413RXq0F9Ano3VSdfvXcRGNx6ig7hM9l
-"""
 
 import networkx as nx
 from collections import Counter, defaultdict
@@ -16,11 +11,11 @@ import pickle
 # CONFIG: set your paths (update these to your file locations in Drive)
 # =========================
 # Update these paths to point to your files in Google Drive
-OPENFDA_PATH =  "/home/ubuntu/myproject/venv/drug_data_kg_openfda_edges_no_drop.graphml"
-PRIMEKG_PATH = "/home/ubuntu/myproject/venv/primekg_hetionet_combined.graphml"
-OUT_MERGED_GRAPH = "/home/ubuntu/myproject/venv/merged_openfda_primekg.graphml"
-OUT_MERGED_PICKLE = "/home/ubuntu/myproject/venv/merged_openfda_primekg.pickle"
-OUT_SUMMARY_JSON = "/home/ubuntu/myproject/venv/merged_openfda_primekg.summary.json"
+OPENFDA_PATH =  "drug_data_kg_openfda_edges_no_drop.graphml"
+PRIMEKG_PATH = "primekg_hetionet_combined.graphml"
+OUT_MERGED_GRAPH = "merged_openfda_primekg.graphml"
+OUT_MERGED_PICKLE = "merged_openfda_primekg.pickle"
+OUT_SUMMARY_JSON = "merged_openfda_primekg.summary.json"
 
 # Options
 USE_MULTIGRAPH = True          # keep every parallel edge (no drops)
@@ -354,7 +349,7 @@ print("Using device:", device)
 # ----------------------------
 # 1) Load GraphML + normalize attrs
 # ----------------------------
-graph_path = "/home/ubuntu/myproject/venv/merged_openfda_primekg.graphml"
+graph_path = "merged_openfda_primekg.graphml"
 assert os.path.exists(graph_path), f"Path does not exist: {graph_path}"
 print(f" Loading GraphML from: {graph_path}")
 

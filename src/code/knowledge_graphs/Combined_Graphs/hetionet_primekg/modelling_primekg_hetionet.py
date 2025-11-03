@@ -25,7 +25,7 @@ os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
 # ===============================
 # 2) Load Hetionet + PrimeKG Graph
 # ===============================
-pkl_path = "/content/drive/MyDrive/Research_kgTxagent/Kg_dev_files_and_data/combined_primekg_hetionet/primekg_hetionet_combined.pkl"
+pkl_path = "primekg_hetionet_combined.pkl"
 with open(pkl_path, "rb") as f:
     G = pickle.load(f)
 print(f"✅ Loaded graph with {len(G.nodes)} nodes and {len(G.edges)} edges.")

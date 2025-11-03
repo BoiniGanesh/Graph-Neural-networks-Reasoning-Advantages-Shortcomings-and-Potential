@@ -28,7 +28,7 @@ os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
 # ===============================
 # 2) Load PrimeKG Graph
 # ===============================
-pkl_path = "/content/drive/MyDrive/Research_kgTxagent/Kg_dev_files_and_data/PrimeKG_&_Data/primekg_graph.pkl"
+pkl_path = "primekg_graph.pkl"
 with open(pkl_path, "rb") as f:
     G = pickle.load(f)
 print(f"✅ Loaded graph with {len(G.nodes)} nodes and {len(G.edges)} edges.")

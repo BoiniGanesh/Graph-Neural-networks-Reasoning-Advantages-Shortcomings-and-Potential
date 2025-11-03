@@ -8,3 +8,13 @@ tqdm
 tensorboard
 tensorflow
 keras
+torch
+torchvision
+torchaudio
+torch-scatter 
+torch-sparse 
+torch-geometric
+networkx
+lxml
+ollama
+Counter
